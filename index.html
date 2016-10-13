@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="validation">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css" media="screen" title="no title">
+    <title></title>
+  </head>
+  <body>
+    <!--
+    For the next set of questions, assume that you have a form with a name="quizForm"
+
+    Create a text input with a name of "question" and give it a validation of "required". If it is $valid add a class of "valid"
+    For your text input with a name of question, add a paragraph tag with the text "please enter a valid question" if the input is not valid
+    Create a text input with a name of "answer" and give it a validation of "required" and a minimum length of 4 characters. If it is $valid and not $pristine add a class of "correct".
+    How would you access all of the errors (in an object) for an input with a name of quizForm.username
+    $error object
+    What validations would you add in an input to make sure that there is a minimum length of 4 and a maximum length of 20
+    ng-minlength=4 ng-maxlength=20
+    What validation would you add in an input to make sure that only numbers between 1 and 5 are a valid input (use regular expressions for this!)
+    ng-pattern='[1-5]'
+   -->
+     <div class="container">
+        <div class="col m6 offset-m3">
+          <h1>Forms!</h1>
+          <form name="quizForm" action="#" method="post" novalidate>
+            <label for="question">Question</label>
+            <input type="text" ng-model="question" name="question" ng-minlength=3 ng-class="{'valid': quizForm.question.$valid}" required>
+            <p name="valid" ng-show="quizForm.question.$invalid && quizForm.question.$dirty">please enter a valid question</p>
+            <label for="anser">Answer</label>
+            <input type="text" ng-model="answer" name="answer" ng-minlength=4 ng-class="{'correct' : quizForm.answer.$valid && !quizForm.answer.$pristine}" required>
+          </form>
+          <br>
+          <br>
+          <br>
+          <br>
+          <form name="testForm" action="#" method="post" novalidate>
+            <label for="username">Username</label>
+            <input type="text" ng-model="username" name="username" ng-minlength=3 ng-maxlength=12 required>
+            <div class="error-container" ng-show="testForm.username.$invalid && testForm.username.$dirty">
+              <p class="error" ng-show="testForm.username.$error.minlength">Username must be at least 3 characters long</p>
+              <p class="error" ng-show="testForm.username.$error.maxlength">Username must be at most 12 characters long</p>
+              <p class="error" ng-show="testForm.username.$error.required">Username required</p>
+            </div>
+            <label for="password">Password</label>
+            <input type="text" ng-model="password" name="password" ng-minlength=3 ng-maxlength=12 required>
+            <div class="error-container" ng-show="testForm.password.$invalid && testForm.password.$dirty">
+              <p class="error" ng-show="testForm.password.$error.minlength">Password must be at least 3 characters long</p>
+              <p class="error" ng-show="testForm.password.$error.maxlength">Password must be at most 12 characters long</p>
+              <p class="error" ng-show="testForm.password.$error.required">Password required</p>
+            </div>
+            <label for="email">Email</label>
+            <input type="email" ng-model="email" name="email" required>
+            <div class="error-container" ng-show="testForm.email.$invalid && testForm.email.$dirty">
+              <p class="error" ng-show="testForm.email.$error.email">Please enter a valid email</p>
+              <p class="error" ng-show="testForm.email.$error.required">Email required</p>
+            </div>
+            <label for="zip">Zip(5 digits)</label>
+            <input type="text" ng-model="zip" name="zip" ng-minlength=5 ng-pattern="/[0-9]/" required>
+            <a class="waves-effect waves-light btn">submit</a>
+            <div class="error-container" ng-show="testForm.zip.$invalid && testForm.zip.$dirty">
+              <p class="error" ng-show="testForm.zip.$error.pattern">Zip code must be a number from 0-9</p>
+              <p class="error" ng-show="testForm.zip.$error.minlength">Zip code must be at least 5 digits long</p>
+              <p class="error" ng-show="testForm.zip.$error.required">Zip code required</p>
+            </div>
+          </form>
+          <br>
+          <br>
+        </div>
+      </div>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="controller.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

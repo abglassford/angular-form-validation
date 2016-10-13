@@ -1,0 +1,11 @@
+.valid {
+  border: 5px solid blue;
+  color: blue
+}
+.correct {
+  border: 5px solid green;
+  color: blue
+}
+.invalid {
+  color: red
+}
