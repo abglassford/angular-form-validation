@@ -37,7 +37,7 @@
           <div class="form-container">
             <form name="testForm" action="#" method="post" novalidate>
               <label for="username">Username</label>
-              <input ng-class="{'invalid': testForm.username.$invalid, 'valid': testForm.username.$valid}"type="text" ng-model="user.username" name="username" ng-minlength=3 ng-maxlength=12 required>
+              <input ng-class="{'invalid': testForm.username.$invalid && !testForm.username.$pristine, 'valid': testForm.username.$valid}"type="text" ng-model="user.username" name="username" ng-minlength=3 ng-maxlength=12 required>
               <p class="error" ng-show="taken">Username Taken</p>
               <div class="error-container" ng-show="testForm.username.$invalid && testForm.username.$dirty">
                 <p class="error" ng-show="testForm.username.$error.minlength">Username must be at least 3 characters long</p>
@@ -45,20 +45,20 @@
                 <p class="error" ng-show="testForm.username.$error.required">Username required</p>
               </div>
               <label for="password">Password</label>
-              <input ng-class="{'invalid': testForm.password.$invalid, 'valid': testForm.password.$valid}"type="text" ng-model="user.password" name="password" ng-minlength=3 ng-maxlength=12 required>
+              <input ng-class="{'invalid': testForm.password.$invalid && !testForm.password.$pristine, 'valid': testForm.password.$valid}"type="text" ng-model="user.password" name="password" ng-minlength=3 ng-maxlength=12 required>
               <div class="error-container" ng-show="testForm.password.$invalid && testForm.password.$dirty">
                 <p class="error" ng-show="testForm.password.$error.minlength">Password must be at least 3 characters long</p>
                 <p class="error" ng-show="testForm.password.$error.maxlength">Password must be at most 12 characters long</p>
                 <p class="error" ng-show="testForm.password.$error.required">Password required</p>
               </div>
               <label for="email">Email</label>
-              <input ng-class="{'invalid': testForm.email.$invalid, 'valid': testForm.email.$valid}"type="email" ng-model="user.email" name="email" required>
+              <input ng-class="{'invalid': testForm.email.$invalid && !testForm.email.$pristine, 'valid': testForm.email.$valid}"type="email" ng-model="user.email" name="email" required>
               <div class="error-container" ng-show="testForm.email.$invalid && testForm.email.$dirty">
                 <p class="error" ng-show="testForm.email.$error.email">Please enter a valid email</p>
                 <p class="error" ng-show="testForm.email.$error.required">Email required</p>
               </div>
               <label for="zip">Zip(5 digits)</label>
-              <input ng-class="{'invalid': testForm.zip.$invalid, 'valid': testForm.zip.$valid}"type="text" ng-model="user.zip" name="zip" ng-minlength=5 ng-pattern="/\d+$/" required>
+              <input ng-class="{'invalid': testForm.zip.$invalid && !testForm.zip.$pristine, 'valid': testForm.zip.$valid}"type="text" ng-model="user.zip" name="zip" ng-minlength=5 ng-pattern="/^\d+$/" required>
               <div class="error-container" ng-show="testForm.zip.$invalid && testForm.zip.$dirty">
                 <p class="error" ng-show="testForm.zip.$error.pattern">Zip code must be a number from 0-9</p>
                 <p class="error" ng-show="testForm.zip.$error.minlength">Zip code must be at least 5 digits long</p>
