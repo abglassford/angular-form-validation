@@ -58,7 +58,7 @@
                 <p class="error" ng-show="testForm.email.$error.required">Email required</p>
               </div>
               <label for="zip">Zip(5 digits)</label>
-              <input ng-class="{'invalid': testForm.zip.$invalid, 'valid': testForm.zip.$valid}"type="text" ng-model="user.zip" name="zip" ng-minlength=5 ng-pattern="/[0-9]/" required>
+              <input ng-class="{'invalid': testForm.zip.$invalid, 'valid': testForm.zip.$valid}"type="text" ng-model="user.zip" name="zip" ng-minlength=5 ng-pattern="/\d+$/" required>
               <div class="error-container" ng-show="testForm.zip.$invalid && testForm.zip.$dirty">
                 <p class="error" ng-show="testForm.zip.$error.pattern">Zip code must be a number from 0-9</p>
                 <p class="error" ng-show="testForm.zip.$error.minlength">Zip code must be at least 5 digits long</p>
