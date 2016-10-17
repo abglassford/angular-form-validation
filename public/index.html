@@ -35,7 +35,7 @@
 
           <h1>Exercise</h1>
           <div class="form-container">
-            <form name="testForm" action="#" method="post" novalidate>
+            <form name="testForm" ng-submit="retrieve(user)" novalidate>
               <label for="username">Username</label>
               <input ng-class="{'invalid': testForm.username.$invalid && !testForm.username.$pristine, 'valid': testForm.username.$valid}"type="text" ng-model="user.username" name="username" ng-minlength=3 ng-maxlength=12 required>
               <p class="error" ng-show="taken">Username Taken</p>
@@ -64,7 +64,7 @@
                 <p class="error" ng-show="testForm.zip.$error.minlength">Zip code must be at least 5 digits long</p>
                 <p class="error" ng-show="testForm.zip.$error.required">Zip code required</p>
               </div>
-              <a class="waves-effect waves-light btn" ng-click="retrieve(user)">submit</a>
+              <input class="waves-effect waves-light btn" type="submit" name="name" value="Submit" ng-disabled="testForm.$invalid">
             </form>
             </div>
           <br>
